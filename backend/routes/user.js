@@ -94,7 +94,9 @@ router.post("/signin", async (req,res)=>{
         },JWT_SECRET)
         
         res.send({
-            token: token 
+            token: token,
+            userId:user._id
+
     })
     return
     }

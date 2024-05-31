@@ -125,6 +125,16 @@ router.put("/edit",authMiddleware, async (req,res)=>{
     }
 })
 
+router.get("/current/:userId",async(req,res)=>{
+
+    const user = await User.findOne({
+            userId:req.params.userId
+        })
+        res.status(200).json({
+            firstName:user.firstName
+        })
+})
+
 router.get("/bulk" ,async (req,res)=>{
     const filter = req.query.filter || "";
      

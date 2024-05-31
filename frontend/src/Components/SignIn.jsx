@@ -51,7 +51,7 @@ const SigninCard = ({ heading,desc,username,password, setUsername, setPassword }
             <div>Password</div>
             <div className="mt-2 mb-2" > <input type="password" value={password} placeholder="password" onChange={(e)=>setPassword(e.target.value)} /> </div>
         </div>
-        <div className="rounded-lg bg-black text-white font-bold text-center cursor-pointer p-2" onClick={handleSignIn} >Sign In</div>
+        <div className="rounded-lg bg-green-500 text-white font-bold text-center cursor-pointer p-2" onClick={handleSignIn} >Sign In</div>
         <div className="m-2"> Already have an account? <span className="underline m-2 cursor-pointer" onClick={()=>{
             navigate("/signup")
         }} >Sign Up</span></div>

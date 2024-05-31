@@ -49,7 +49,7 @@ const SignupCard = ({ heading, desc, firstName, setFirstName, lastName, setLastN
                     <div>Password</div>
                     <div className="mt-2 mb-2" > <input type="password" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} /> </div>
                 </div>
-                <div className="rounded-lg bg-black text-white font-bold text-center cursor-pointer p-2" onClick={handleSignUp}> Sign Up</div>
+                <div className="rounded-lg bg-green-500 text-white font-bold text-center cursor-pointer p-2" onClick={handleSignUp}> Sign Up</div>
                 <div className="m-2"> Already have an account? <span className="underline m-2 cursor-pointer" onClick={ navigate("/signin") }>Login</span></div>
             </div>
         </div>

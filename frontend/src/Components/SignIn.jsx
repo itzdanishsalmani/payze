@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export function SignIn() {
     const [username,setUsername]=useState("")
@@ -32,11 +33,16 @@ const SigninCard = ({ heading,desc,username,password, setUsername, setPassword }
                 const userId = response.data.userId;
                 localStorage.setItem("token",token);
                 localStorage.setItem("userId",userId);
+                toast.success("Login")
                 navigate("/dashboard")
             }
         })
         .catch(error => {
-            console.error("There was an error signing up!", error);
+            if(error.response){
+                toast.error(error.response.data.message)
+            }else{
+                toast.error("There was an error signing up!", error);
+            }
         });
     };
     return ( <div>

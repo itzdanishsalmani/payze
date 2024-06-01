@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useNavigate, useSearchParams } from "react-router-dom"
 import { useState } from "react"
+import { toast } from "react-toastify"
 
 export function SendMoney(){
     return (
@@ -34,8 +35,19 @@ const SendMoneyCard = () => {
                             headers: {
                                 Authorization: "Bearer " + localStorage.getItem("token")
                             }
+                        }).then(response=>{
+                            if(response){
+                                toast.success("Transaction complete")
+                                navigate("/dashboard")
+                            }
                         })
-                        navigate("/dashboard")
+                        .catch(error=>{
+                            if(error.response){
+                                toast.error(error.response.data.message)
+                            }else{
+                                toast.error("There us an error while transaction",error)
+                            }
+                        })
                     }}
                      >Initiate Transfer</div>
                 </div>

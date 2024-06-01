@@ -6,13 +6,10 @@ const express = require('express');
 const zod = require("zod");
 const { authMiddleware } = require("../middleware");
 const router = express.Router();
-const mongoose = require('mongoose');
-const { ObjectId } = mongoose.Types;
-
 
 const signupSchema = zod.object({
 
-    username:zod.string(),
+    username:zod.string().email(),
     password:zod.string(),
     firstName:zod.string(),
     lastName:zod.string()
@@ -20,7 +17,7 @@ const signupSchema = zod.object({
 
 const signinSchema = zod.object({
 
-    username:zod.string(),
+    username:zod.string().email(),
     password:zod.string()
 }) 
 
@@ -99,7 +96,6 @@ router.post("/signin", async (req,res)=>{
         res.send({
             token: token,
             userId:user._id
-
     })
     return
     }
@@ -128,7 +124,7 @@ router.put("/edit",authMiddleware, async (req,res)=>{
     }
 })
 
-router.get("/bulk" ,async (req,res)=>{
+router.get("/bulk",authMiddleware,async (req,res)=>{
     const filter = req.query.filter || "";
      
     const users = await User.find({

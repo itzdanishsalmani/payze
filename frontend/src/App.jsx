@@ -1,4 +1,5 @@
 import { Dashboard } from "./Components/Dashboard"
+import { Edit } from "./Components/Edit"
 import { Root } from "./Components/Root"
 import { SendMoney } from "./Components/SendMoney"
 import { SignIn } from "./Components/SignIn"
@@ -15,6 +16,7 @@ function App() {
             <Route path="/signin" element={ <SignIn/> } />
             <Route path="/dashboard" element={ <Dashboard/> } />
             <Route path="/send" element={ <SendMoney/> } />
+            <Route path="/edit" element={ <Edit /> } />
           </Routes>
         </BrowserRouter>
     </div>

@@ -6,6 +6,9 @@ const express = require('express');
 const zod = require("zod");
 const { authMiddleware } = require("../middleware");
 const router = express.Router();
+const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Types;
+
 
 const signupSchema = zod.object({
 
@@ -123,16 +126,6 @@ router.put("/edit",authMiddleware, async (req,res)=>{
             error:error
         })
     }
-})
-
-router.get("/current/:userId",async(req,res)=>{
-
-    const user = await User.findOne({
-            userId:req.params.userId
-        })
-        res.status(200).json({
-            firstName:user.firstName
-        })
 })
 
 router.get("/bulk" ,async (req,res)=>{

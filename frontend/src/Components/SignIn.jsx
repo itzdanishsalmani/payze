@@ -30,8 +30,8 @@ const SigninCard = ({ heading,desc,username,password, setUsername, setPassword }
             if(response){
                 const token = response.data.token;
                 const userId = response.data.userId;
-                localStorage.setItem("token",token)
-                localStorage.setItem("userId",userId)
+                localStorage.setItem("token",token);
+                localStorage.setItem("userId",userId);
                 navigate("/dashboard")
             }
         })

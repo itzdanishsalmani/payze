@@ -100,7 +100,7 @@ router.post("/signin", async (req,res)=>{
     return
     }
     res.status(411).json({
-        message:"Error while logging in"
+        message:"Incorrect email or password"
     })
 })
 

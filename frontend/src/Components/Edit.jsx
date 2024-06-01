@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./axiosConfig";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +26,7 @@ const SignupCard = ({ heading, desc, firstName, setFirstName, lastName, setLastN
 
     const handleEdit = () => {
         const userId = localStorage.getItem("userId")
-        axios.put("http://localhost:7000/api/v1/user/edit", {
+        axios.put("/user/edit", {
             _id:userId,
             firstName: firstName,
             lastName: lastName,

@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "./axiosConfig"
 import { useNavigate, useSearchParams } from "react-router-dom"
 import { useState } from "react"
 import { toast } from "react-toastify"
@@ -27,7 +27,11 @@ const SendMoneyCard = () => {
                     <div><input className="mt-2 mb-2 w-100" type="number" placeholder="Enter Amount" onChange={(e)=>setAmount(e.target.value)} /></div>
                     <div className="mt-4 p-2 cursor-pointer text-white bg-green-500 text-center border rounded-lg" onClick={() => {
                         const userId = localStorage.getItem("userId")
-                        axios.post("http://localhost:7000/api/v1/account/transfer", {
+                        if (amount===0){
+                            toast.error("Amount should not be empty")
+                            return
+                        }
+                        axios.post("/account/transfer", {
                             userId:userId,
                             to: id,
                             amount
@@ -45,7 +49,7 @@ const SendMoneyCard = () => {
                             if(error.response){
                                 toast.error(error.response.data.message)
                             }else{
-                                toast.error("There us an error while transaction",error)
+                                toast.error("There is an error while transaction",error)
                             }
                         })
                     }}

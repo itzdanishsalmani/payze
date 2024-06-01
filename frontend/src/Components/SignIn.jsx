@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./axiosConfig";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -23,7 +23,12 @@ const SigninCard = ({ heading,desc,username,password, setUsername, setPassword }
     const navigate = useNavigate()
 
     const handleSignIn = () => {
-        axios.post("http://localhost:7000/api/v1/user/signin", {
+        if (username=="" || password==""){
+            toast.error("email or password cannot be empty")
+            return
+        }
+
+        axios.post("/user/signin", {
             username: username,
             password: password
         })

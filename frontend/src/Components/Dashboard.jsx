@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "./axiosConfig";
 
 export function Dashboard() {
     const [allUsers, setAllUsers] = useState([]);
@@ -8,7 +8,7 @@ export function Dashboard() {
 
     useEffect(() => {
         // Fetch all users
-        axios.get(`http://localhost:7000/api/v1/user/bulk`, {
+        axios.get(`/user/bulk`, {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
             }
@@ -17,12 +17,10 @@ export function Dashboard() {
             // Ensure that the response contains the 'user' array
             setAllUsers(res.data.user);
         })
-        .catch(err => {
-            console.error(err); // Handle the error
-        });
+        
         const userId = localStorage.getItem("userId")
         // Fetch balance
-        axios.get(`http://localhost:7000/api/v1/account/balance/${userId}`, {
+        axios.get(`/account/balance/${userId}`, {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
             }
@@ -30,9 +28,7 @@ export function Dashboard() {
         .then(res => {
             setBalance(res.data.balance);
         })
-        .catch(err => {
-            console.log(err);
-        });
+        
     }, [balance,allUsers]);
 
     return (

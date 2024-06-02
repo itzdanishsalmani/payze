@@ -52,7 +52,7 @@ const Title = ({ balance, allUsers, setFilter }) => {
     return (
         <div>
             <div className="p-4 flex justify-between items-center border">
-                <div className="font-bold text-green-500 text-2xl">Easy Pay</div>
+                <div className="font-bold text-green-500 text-2xl">Payze</div>
                 <div>Hello, User <button className="pl-2 pr-2 rounded bg-green-500 text-white border" onClick={()=>{
                     navigate("/edit")
                 }} >Edit</button></div>

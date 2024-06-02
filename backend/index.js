@@ -9,6 +9,10 @@ app.use(cors())
 
 app.use("/api/v1", mainRouter);
 
+app.get("/",(req,res)=>{
+    res.send("server is running")
+})
+
 app.listen(7000,()=>(
     console.log(`server is running at 7000`)
 ))

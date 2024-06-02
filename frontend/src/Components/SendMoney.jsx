@@ -1,11 +1,13 @@
 import axios from "./axiosConfig"
 import { useNavigate, useSearchParams } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 
 export function SendMoney(){
+
     return (
         <div>
+            
             <SendMoneyCard />   
         </div>
     )
@@ -17,6 +19,16 @@ const SendMoneyCard = () => {
     const id = searchParams.get("id");
     const name = searchParams.get("name");
     const [amount, setAmount] = useState(0);
+
+    useEffect(()=>{
+        const token = localStorage.getItem("token")
+        if(!token){
+            toast.error("Please Sign up")
+            navigate("/signup")
+            return
+        }
+    },[])
+
     return (
         <div>
             <div className="bg-slate-300 flex flex-col h-screen justify-center items-center"> 

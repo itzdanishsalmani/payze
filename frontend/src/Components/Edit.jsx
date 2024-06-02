@@ -1,6 +1,7 @@
 import axios from "./axiosConfig";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export function Edit() {
     const [firstName, setFirstName] = useState("")
@@ -23,6 +24,15 @@ export function Edit() {
 
 const SignupCard = ({ heading, desc, firstName, setFirstName, lastName, setLastName, password, setPassword }) => {
     const navigate = useNavigate();
+    useEffect(()=>{
+        const token = localStorage.getItem("token")
+        if(!token){
+            toast.error("Please Sign up")
+            navigate("/signup")
+            return
+        }
+    },[])
+
 
     const handleEdit = () => {
         const userId = localStorage.getItem("userId")

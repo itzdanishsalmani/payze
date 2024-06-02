@@ -1,7 +1,6 @@
 require("dotenv").config()
 const DB = process.env.DB
 const mongoose = require("mongoose");
-const { number } = require("zod");
 
 mongoose.connect(DB, {
     useNewUrlParser: true,

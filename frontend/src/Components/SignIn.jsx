@@ -1,5 +1,5 @@
 import axios from "./axiosConfig";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -21,6 +21,13 @@ export function SignIn() {
 
 const SigninCard = ({ heading,desc,username,password, setUsername, setPassword })=>{
     const navigate = useNavigate()
+
+    useEffect(()=>{
+        const token = localStorage.getItem("token")
+        if (token){
+            navigate("/dashboard")
+        }
+    })
 
     const handleSignIn = () => {
         if (username=="" || password==""){

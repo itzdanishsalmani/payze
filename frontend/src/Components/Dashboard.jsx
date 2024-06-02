@@ -50,12 +50,12 @@ const Title = ({ balance, allUsers, setFilter }) => {
     const navigate = useNavigate()
 
     return (
-        <div>
-            <div className="p-4 flex justify-between items-center border">
+        <div >
+            <div className=" p-4 flex justify-between items-center border">
                 <div className="font-bold text-green-500 text-2xl">Payze</div>
-                <div>Hello, User <button className="pl-2 pr-2 rounded bg-green-500 text-white border" onClick={()=>{
+                <div>Hello, <button className="p-2 rounded-full bg-green-500 text-white border" onClick={()=>{
                     navigate("/edit")
-                }} >Edit</button></div>
+                }} >Edit Profile</button></div>
             </div>
             <div className="p-4 font-bold flex justify-between">
                 <div>Your Balance</div>
@@ -69,12 +69,12 @@ const Title = ({ balance, allUsers, setFilter }) => {
                 {allUsers.length===0 ? (
                     <div>No user found</div>
                 ):(
-                allUsers.map((user, index) => (
+                allUsers.map((user, index) => ( 
                     <div className="flex justify-between" key={index}>
                         <div >{user.firstName} {user.lastName} </div>
-                        <div className="p-2 bg-green-500 text-white cursor-pointer border rounded-lg" onClick={(e) => 
+                        <div className="pl-2 pr-2 md:pl-4 md:px-4 md:py-2 bg-green-500 md:text-xl text-white cursor-pointer border rounded-full" onClick={(e) => 
                             navigate("/send?id=" + user._id + "&name=" + user.firstName)
-                        } > send money</div> 
+                        } > send </div> 
                         </div>
                 ))
                 )}

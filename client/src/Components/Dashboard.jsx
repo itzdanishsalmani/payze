@@ -52,7 +52,7 @@ const Title = ({ balance, allUsers, setFilter }) => {
     return (
         <div >
             <div className=" p-4 flex justify-between items-center border">
-                <div className="font-bold text-green-500 text-2xl">Payze</div>
+                <div className="font-bold text-green-500 text-2xl"> <a href="https://twitter.com/itzzdanish">Payze</a></div>
                 <div>Hello, <button className="p-2 rounded-full bg-green-500 text-white border" onClick={()=>{
                     navigate("/edit")
                 }} >Edit Profile</button></div>
@@ -67,7 +67,7 @@ const Title = ({ balance, allUsers, setFilter }) => {
             </div>
             <div className="p-4 flex flex-col text-lg">
                 {allUsers.length===0 ? (
-                    <div>No user found</div>
+                    <div className="font-bold text-center">Loading...</div>
                 ):(
                 allUsers.map((user, index) => ( 
                     <div className="flex justify-between" key={index}>

@@ -1,4 +1,4 @@
-import axios from "./axiosConfig"
+import axios from "./axios/axiosConfig";
 import { useNavigate, useSearchParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
@@ -7,7 +7,6 @@ export function SendMoney(){
 
     return (
         <div>
-            
             <SendMoneyCard />   
         </div>
     )
@@ -39,7 +38,7 @@ const SendMoneyCard = () => {
                     <div><input className="mt-2 mb-2 w-100" type="number" placeholder="Enter Amount" onChange={(e)=>setAmount(e.target.value)} /></div>
                     <div className="mt-4 p-2 cursor-pointer text-white bg-green-500 text-center border rounded-lg" onClick={() => {
                         const userId = localStorage.getItem("userId")
-                        if (amount===0){
+                        if (amount==0){
                             toast.error("Amount should not be empty")
                             return
                         }

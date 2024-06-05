@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "./axiosConfig";
+import axios from "./axios/axiosConfig";
 import { toast } from "react-toastify";
 
 export function Dashboard() {
@@ -53,9 +53,16 @@ const Title = ({ balance, allUsers, setFilter }) => {
         <div >
             <div className=" p-4 flex justify-between items-center border">
                 <div className="font-bold text-green-500 text-2xl"> <a href="https://twitter.com/itzzdanish">Payze</a></div>
-                <div>Hello, <button className="p-2 rounded-full bg-green-500 text-white border" onClick={()=>{
+                <div><button className="mx-2 p-2 rounded-full bg-green-500 text-white border" onClick={()=>{
                     navigate("/edit")
-                }} >Edit Profile</button></div>
+                }} >Edit Profile</button>
+                 
+                     <button className="mx-2 p-2 rounded-full bg-green-500 text-white border" onClick={()=>{
+                    localStorage.removeItem("token")
+                    localStorage.removeItem("userId")
+                    navigate("/signin")
+                }} >Logout </button>
+                </div>
             </div>
             <div className="p-4 font-bold flex justify-between">
                 <div>Your Balance</div>
